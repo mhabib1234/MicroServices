@@ -12,6 +12,7 @@ public interface BookService {
     ResponseEntity<Object> getBooksByAuthorAndTitle(String authorName, String title);
     ResponseEntity<Object> deleteBook(Integer bookId);
     ResponseEntity<Object> getBook(Integer bookId);
+    Boolean reduceBookQuantity(Integer bookQuantity, Integer bookId);
     ResponseEntity<Object> update(Integer bookId,BookRequestModel requestModel);
 
 

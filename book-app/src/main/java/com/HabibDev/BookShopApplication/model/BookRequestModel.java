@@ -15,6 +15,7 @@ public class BookRequestModel {
     private String details;
     private Integer price;
     private Integer pageCount;
+    private Integer bookQuantity;
 
     // Add more properties as needed
 

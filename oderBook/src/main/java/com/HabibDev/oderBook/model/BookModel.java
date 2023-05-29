@@ -1,22 +1,12 @@
-package com.HabibDev.BookShopApplication.entity;
-
+package com.HabibDev.oderBook.model;
 
 import lombok.*;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Books")
-public class BookEntity {
-    @Id
-    @GeneratedValue
+public class BookModel {
     private Integer bookId;
     private String title;
     private String author;
@@ -24,6 +14,8 @@ public class BookEntity {
     private Integer price;
     private Integer pageCount;
     private Integer bookQuantity;
+
+    // Add more properties as needed
 
 }
 

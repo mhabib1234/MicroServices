@@ -1,15 +1,15 @@
-package com.example.ApiGetway;
+package com.HabibDev.Payment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@SpringBootApplication/
+@SpringBootApplication
 @EnableEurekaClient
-public class ApiGatewayApplication {
+public class PaymentAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class, args);
+		SpringApplication.run(PaymentAppApplication.class, args);
 	}
 
 }

@@ -1,15 +1,17 @@
-package com.example.ApiGetway;
+package com.HabibDev.oderBook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication/
+@SpringBootApplication
 @EnableEurekaClient
-public class ApiGatewayApplication {
+@EnableFeignClients
+public class  OderBookApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class, args);
+		SpringApplication.run(OderBookApplication.class, args);
 	}
 
 }

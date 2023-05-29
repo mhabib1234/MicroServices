@@ -42,6 +42,7 @@ public class BookServiceImp implements BookService {
                 .price(requestModel.getPrice())
                 .details(requestModel.getDetails())
                 .pageCount(requestModel.getPageCount())
+                .bookQuantity(requestModel.getBookQuantity())
                 .build();
         bookRepository.save(bookEntity);
 
@@ -133,5 +134,25 @@ public class BookServiceImp implements BookService {
             throw new BookNotFoundException("Book's Id not matched. Please provide valid book id");
         }
     }
+
+    @Override
+    public Boolean reduceBookQuantity(Integer bookQuantity, Integer bookId) {
+        Optional<BookEntity> bookOptional = bookRepository.findById(bookId);
+        if (bookOptional.isPresent()) {
+            BookEntity book = bookOptional.get();
+
+            if (book.getBookQuantity() >= bookQuantity) {
+                // Process the payment and deduct the amount from the account balance
+                Integer updatedQuantity = book.getBookQuantity() - bookQuantity;
+                book.setBookQuantity(updatedQuantity);
+                bookRepository.save(book);
+                return true; // Return true if book quantity was successfully reduced
+            } else {
+                return false; // Return false if book quantity is insufficient
+            }
+        }
+        return false; // Return false if the book is not found
+    }
+
 
 }

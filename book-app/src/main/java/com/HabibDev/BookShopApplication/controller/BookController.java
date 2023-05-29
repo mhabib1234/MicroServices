@@ -60,4 +60,9 @@ public class BookController {
     }
 
 
+    @GetMapping("/reduceQuantity/{bookQuantity}/{bookId}")
+    public Boolean reduceQuantity(@PathVariable Integer bookQuantity,@PathVariable Integer bookId ) {
+      return  bookService.reduceBookQuantity(bookQuantity, bookId);
+    }
+
 }
