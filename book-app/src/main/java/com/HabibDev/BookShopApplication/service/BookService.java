@@ -13,6 +13,7 @@ public interface BookService {
     ResponseEntity<Object> deleteBook(Integer bookId);
     ResponseEntity<Object> getBook(Integer bookId);
     Boolean reduceBookQuantity(Integer bookQuantity, Integer bookId);
+    void increaseBookQuantity(Integer bookQuantity, Integer bookId);
     ResponseEntity<Object> update(Integer bookId,BookRequestModel requestModel);
 
 

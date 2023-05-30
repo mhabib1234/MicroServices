@@ -51,6 +51,7 @@ public class OrderController {
         Integer price = book.getPrice() * orderModel.getQuantity();
         orderModel.setTotalPrice(price);
 
+        //sending customerID and price to the payment service
         PaymentRequest paymentRequest = new PaymentRequest();
         paymentRequest.setCustomerId(orderModel.getCustomerId());
         paymentRequest.setAmount(price);
@@ -70,10 +71,12 @@ public class OrderController {
                 // Create the order using the order service
                 return orderService.createOrder(orderModel);
             } else if (paymentMessage.equals("Customer not found")) {
-                // Return a bad request response if the customer is not found
+                // Return a bad request response and roll back book quantity if the customer is not found
+                feignClientsConfig.increaseQuantity(orderModel.getQuantity(), bookId);
                 return ResponseEntity.badRequest().body("Customer not found");
             } else {
-                // Return a bad request response if there is insufficient balance
+                // Return a bad request response and roll back book quantity if there is insufficient balance
+                feignClientsConfig.increaseQuantity(orderModel.getQuantity(), bookId);
                 return ResponseEntity.badRequest().body("Insufficient balance");
             }
         }
@@ -81,7 +84,6 @@ public class OrderController {
         // Return a bad request response if the payment response is null
         return ResponseEntity.badRequest().body("Failed to make an order!");
     }
-
 
    // @PostMapping("/create")
    /* public ResponseEntity<Object> createOrder(@RequestBody OrderModel orderModel) {
@@ -129,6 +131,7 @@ public class OrderController {
     }
 
 */
+
     @GetMapping("/all")
     public ResponseEntity<List<OrderEntity>> getAllOrders() {
         return orderService.getAllOrders();

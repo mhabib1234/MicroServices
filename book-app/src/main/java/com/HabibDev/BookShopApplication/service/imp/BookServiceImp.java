@@ -155,4 +155,17 @@ public class BookServiceImp implements BookService {
     }
 
 
+    @Override
+    public void increaseBookQuantity(Integer bookQuantity, Integer bookId) {
+        Optional<BookEntity> bookOptional = bookRepository.findById(bookId);
+        if (bookOptional.isPresent()) {
+            BookEntity book = bookOptional.get();
+
+            Integer updatedQuantity = book.getBookQuantity() + bookQuantity;
+            book.setBookQuantity(updatedQuantity);
+            bookRepository.save(book);
+
+        }
+    }
+
 }

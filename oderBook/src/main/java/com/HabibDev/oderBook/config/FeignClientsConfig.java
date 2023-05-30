@@ -21,4 +21,7 @@ public interface FeignClientsConfig {
     @GetMapping("books/reduceQuantity/{bookQuantity}/{bookId}")
     public Boolean reduceQuantity(@PathVariable("bookQuantity") Integer bookQuantity,@PathVariable("bookId") Integer bookId) ;
 
+    @GetMapping("books/increaseQuantity/{bookQuantity}/{bookId}")
+    public void increaseQuantity(@PathVariable("bookQuantity") Integer bookQuantity,@PathVariable("bookId") Integer bookId) ;
+
 }

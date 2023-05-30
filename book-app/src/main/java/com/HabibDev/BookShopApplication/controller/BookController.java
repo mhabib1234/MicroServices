@@ -28,7 +28,7 @@ public class BookController {
     }
 
     //get all books for an author
-    @GetMapping("/author/{authorName}")
+    @GetMapping("4")
     public ResponseEntity<Object> getBooksByAuthor(@PathVariable String authorName) {
      return bookService.getBooksByAuthor(authorName);
     }
@@ -63,6 +63,11 @@ public class BookController {
     @GetMapping("/reduceQuantity/{bookQuantity}/{bookId}")
     public Boolean reduceQuantity(@PathVariable Integer bookQuantity,@PathVariable Integer bookId ) {
       return  bookService.reduceBookQuantity(bookQuantity, bookId);
+    }
+
+    @GetMapping("/increaseQuantity/{bookQuantity}/{bookId}")
+    public void increaseBookQuantity(@PathVariable Integer bookQuantity,@PathVariable Integer bookId ) {
+         bookService.increaseBookQuantity(bookQuantity, bookId);
     }
 
 }
